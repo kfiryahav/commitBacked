@@ -39,13 +39,13 @@ To set up the backend of the project, follow these steps:
 - You can either run
 
    ```bash
-   npm start
+   npm run start
    ```
 
-- Or:
+- Or for dev mode:
 
    ```bash
-   npm start
+   npm run dev
    ```
 
 # Enjoy :)
