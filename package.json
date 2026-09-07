@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "organize": "node scripts/organizeByType.js"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",

@@ -48,4 +48,29 @@ To set up the backend of the project, follow these steps:
    npm run dev
    ```
 
+## Utility: Organize a folder by file type
+
+This repo also includes a standalone helper script, `scripts/organizeByType.js`, that sorts a messy folder into sub-folders by file type (Images, Documents, Videos, Audio, Archives, Code, Others).
+
+Usage:
+
+```bash
+# Preview what would happen, without moving anything
+node scripts/organizeByType.js /path/to/folder --dry-run
+
+# Organize the folder (creates sub-folders and moves files into them)
+node scripts/organizeByType.js /path/to/folder
+
+# Also organize files inside nested sub-folders
+node scripts/organizeByType.js /path/to/folder --recursive
+```
+
+Or via the npm script:
+
+```bash
+npm run organize -- /path/to/folder
+```
+
+The script is safe to re-run: it skips folders it already created (e.g. `Images`, `Documents`) and avoids overwriting files with the same name by appending a counter (e.g. `photo (1).jpg`).
+
 # Enjoy :)
