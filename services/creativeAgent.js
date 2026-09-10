@@ -7,7 +7,7 @@ const Anthropic = require('@anthropic-ai/sdk');
  * marketing angles in Hebrew, each built around one pain point.
  */
 
-const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5';
+const MODEL = process.env.ANTHROPIC_MODEL || 'claude-opus-5';
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 

@@ -46,7 +46,7 @@ Setup:
 1. `npm install` (this pulls in Playwright and its browser binaries via
    `npx playwright install chromium` the first time).
 2. Set `ANTHROPIC_API_KEY` (and optionally `ANTHROPIC_MODEL`, default
-   `claude-sonnet-5`) in your `.env`.
+   `claude-opus-5`) in your `.env`.
 
 Usage - CLI (no server/DB required):
 
