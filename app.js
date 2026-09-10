@@ -8,6 +8,7 @@ require('./services/db.connection');
 require('dotenv').config();
 
 const usersRouter = require('./routes/users');
+const creativeRouter = require('./routes/creative');
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter);
+app.use('/creative', creativeRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));

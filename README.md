@@ -34,6 +34,39 @@ To set up the backend of the project, follow these steps:
    ```bash
    npm install
 
+## Agent 1 - Product Reader & Marketing Angles
+
+Given a product page URL, this reads the page (title, description, specs,
+price), identifies the deepest customer pain points the product solves, and
+returns 3 distinct Hebrew marketing angles - each with a hook and a short
+script - built around the strongest pain points.
+
+Setup:
+
+1. `npm install` (this pulls in Playwright and its browser binaries via
+   `npx playwright install chromium` the first time).
+2. Set `ANTHROPIC_API_KEY` (and optionally `ANTHROPIC_MODEL`, default
+   `claude-sonnet-5`) in your `.env`.
+
+Usage - CLI (no server/DB required):
+
+```bash
+node scripts/analyzeProduct.js "<product-url>" --save output.json
+```
+
+Usage - HTTP endpoint (needs the server running, i.e. `MONGODB_URI` set):
+
+```bash
+curl -X POST http://localhost:5000/creative/analyzeProduct \
+  -H "Content-Type: application/json" \
+  -d '{"url": "<product-url>"}'
+```
+
+Note: some marketplaces (e.g. AliExpress) run bot detection and may show a
+CAPTCHA/verification wall instead of the real page. `services/productScraper.js`
+detects this and throws a clear error; for production reliability, add a
+stealth plugin and/or a residential proxy to the Playwright context.
+
 ## Run the server
 
 - You can either run
