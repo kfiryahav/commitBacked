@@ -61,7 +61,13 @@ const extractMeta = (html, property) => {
 const scrapeProductPage = async (url) => {
     if (!url) throw new Error('url is required');
 
-    const browser = await chromium.launch({ headless: true });
+    // PLAYWRIGHT_EXECUTABLE_PATH lets you point at a specific Chromium build
+    // (e.g. one already pre-installed on the host) instead of the one
+    // Playwright would normally auto-download for the installed npm version.
+    const browser = await chromium.launch({
+        headless: true,
+        executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH || undefined,
+    });
 
     try {
         const context = await browser.newContext({
