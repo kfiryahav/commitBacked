@@ -1,0 +1,16 @@
+{
+ "_note": "Brand kit for the cards, buttons and the gold hairline. Edit it, or tell Claude your colours and it updates this file. Until 'confirmed' is true Claude asks once on the first edit.",
+ "confirmed": false,
+ "name": "Kfir Yahav",
+ "handle": "@kfiryahav",
+ "niche": "",
+ "language": "he",
+ "cta_keyword": "",
+ "colors": {
+  "ink": "#0B0B0C",
+  "gold": "#C9A24D",
+  "gold_light": "#E2C27A",
+  "ivory": "#F5F1E8",
+  "muted": "#8E8778"
+ }
+}
