@@ -95,6 +95,7 @@ const out = {
   })),
   profile_errors: loaded.errors,
   api_calls: loaded.calls,
+  credits_remaining: loaded.creditsRemaining ?? null,
 };
 
 await mkdir(dirname(outPath), { recursive: true });
@@ -109,6 +110,6 @@ if (!out.pick) {
   );
 }
 if (loaded.errors.length) console.log(`PROFILE_ERRORS: ${loaded.errors.map((e) => `@${e.handle}: ${e.error}`).join(' | ')}`);
-console.log(`API calls (credits): ${out.api_calls}. Wrote ${outPath}`);
+console.log(`API calls (credits): ${out.api_calls}. CREDITS_REMAINING: ${out.credits_remaining ?? 'unknown'}. Wrote ${outPath}`);
 // Exit non-zero only when every profile failed (e.g. bad key / out of credits).
 process.exit(loaded.creators.length === 0 ? 3 : 0);

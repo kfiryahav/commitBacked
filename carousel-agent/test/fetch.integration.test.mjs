@@ -64,7 +64,7 @@ test('fetch-carousels: paginates, isolates a failing profile, picks the viral ca
     const list = pages[handle];
     const idx = url.searchParams.get('next_max_id') ? 1 : 0;
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(list[idx]));
+    res.end(JSON.stringify({ ...list[idx], credits_remaining: 42 - idx }));
   });
   await new Promise((r) => server.listen(0, '127.0.0.1', r));
   t.after(async () => {
@@ -94,6 +94,8 @@ test('fetch-carousels: paginates, isolates a failing profile, picks the viral ca
   assert.equal(out.pick.ratio_vs_own_median, 6);
   assert.equal(out.profiles_ok[0].posts, 11); // both pages were fetched
   assert.equal(out.profile_errors.length, 1);
+  assert.equal(out.credits_remaining, 41); // lowest balance seen across pages
+  assert.match(r.stdout, /CREDITS_REMAINING: 41/);
   assert.ok(seenKeys.every((k) => k === 'proxy-injected'), 'placeholder key header is sent when no key is set');
 
   // Second run with the pick marked as used: nothing else passes -> NO_PICK, thresholds untouched.
