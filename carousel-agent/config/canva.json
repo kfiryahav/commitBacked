@@ -1,5 +1,5 @@
 {
-  "_comment": "Measured on a throwaway copy of the design on 2026-11-14 (edit + thumbnail test). Locator IDs come from that copy and MAY differ in a fresh copy: always find elements by original text + role (read-design on the new copy), never by ID alone. max_chars are approximate and derived from the original text plus one overflow test; always verify with the after-edit thumbnail.",
+  "_comment": "Measured on a throwaway copy of the design on 2026-11-14 (edit + thumbnail test). Locator IDs were IDENTICAL in a second fresh copy (checked 2026-11-14), but still find elements by original text + role (read-design on the new copy) and treat the IDs as a hint. max_chars are approximate and derived from the original text plus one overflow test; always verify with the after-edit thumbnail.",
   "design": {
     "id": "DAHUC57-RDg",
     "title": "2026-09-02 - הסוד הקטן שלמדתי על חנויות שופיפיי שלא מוכרות",
