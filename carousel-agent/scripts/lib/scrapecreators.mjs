@@ -4,8 +4,28 @@
 // for api.scrapecreators.com, so the header value below is only a placeholder.
 // Locally, set SCRAPECREATORS_API_KEY. Never commit a real key.
 
+import { readFileSync } from 'node:fs';
+
 const BASE = process.env.SCRAPECREATORS_BASE || 'https://api.scrapecreators.com';
-const KEY = process.env.SCRAPECREATORS_API_KEY || 'proxy-injected';
+
+// Local runs: the key may live in a git-ignored .env file (SCRAPECREATORS_API_KEY=...).
+function keyFromDotenv() {
+  for (const file of ['.env', 'carousel-agent/.env']) {
+    let text;
+    try {
+      text = readFileSync(file, 'utf8');
+    } catch {
+      continue;
+    }
+    for (const line of text.split('\n')) {
+      const m = line.match(/^\s*SCRAPECREATORS_API_KEY\s*=\s*(.+?)\s*$/);
+      if (m) return m[1].replace(/^["']|["']$/g, '');
+    }
+  }
+  return null;
+}
+
+const KEY = process.env.SCRAPECREATORS_API_KEY || keyFromDotenv() || 'proxy-injected';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 

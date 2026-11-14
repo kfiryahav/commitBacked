@@ -40,9 +40,9 @@ const pages = {
   ],
 };
 
-function run(args, env) {
+function run(args, env, cwd) {
   return new Promise((res) => {
-    const child = spawn(process.execPath, [script, ...args], { env: { ...process.env, ...env } });
+    const child = spawn(process.execPath, [script, ...args], { env: { ...process.env, ...env }, cwd });
     let stdout = '';
     let stderr = '';
     child.stdout.on('data', (d) => (stdout += d));
@@ -134,4 +134,26 @@ test('fetch-carousels: exits 3 when every profile fails (bad key / no credits)',
   });
   assert.equal(r.code, 3);
   assert.match(r.stdout, /PROFILE_ERRORS: @anyone: HTTP 401/);
+});
+
+test('fetch-carousels: reads SCRAPECREATORS_API_KEY from a .env file in the working directory', async (t) => {
+  const seenKeys = [];
+  const server = http.createServer((req, res) => {
+    seenKeys.push(req.headers['x-api-key']);
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ items: [], more_available: false }));
+  });
+  await new Promise((r) => server.listen(0, '127.0.0.1', r));
+  await mkdir(work, { recursive: true });
+  t.after(async () => {
+    server.close();
+    await rm(work, { recursive: true, force: true });
+  });
+  await writeFile(resolve(work, '.env'), 'OTHER=1\nSCRAPECREATORS_API_KEY="from-dotenv-123"\n');
+  const cfgPath = resolve(work, 'dotenv.json');
+  await writeFile(cfgPath, JSON.stringify({ profiles: ['anyone'] }));
+  const env = { SCRAPECREATORS_BASE: `http://127.0.0.1:${server.address().port}`, SCRAPECREATORS_API_KEY: '' };
+  await run(['--config', cfgPath, '--out', resolve(work, 'z.json')], env, work);
+  assert.ok(seenKeys.length > 0);
+  assert.ok(seenKeys.every((k) => k === 'from-dotenv-123'), `header was ${seenKeys[0]}`);
 });
