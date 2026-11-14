@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node carousel-agent/scripts/*)",
+      "Bash(node --test carousel-agent/test/*)",
+      "Bash(ls carousel-agent/*)",
+      "Bash(git fetch origin claude/practical-noether-1rp10z)",
+      "Bash(git checkout FETCH_HEAD -- carousel-agent)",
+      "Read(carousel-agent/**)",
+      "Edit(carousel-agent/out/**)",
+      "mcp__Canva__copy-design",
+      "mcp__Canva__read-design",
+      "mcp__Canva__edit-design",
+      "mcp__Canva__get-assets",
+      "mcp__Canva__generate-image",
+      "mcp__Canva__get-generate-image-job",
+      "mcp__Canva__upload-asset-from-url",
+      "mcp__Google_Drive__search_files",
+      "mcp__Google_Drive__read_file_content",
+      "mcp__Google_Drive__get_file_metadata",
+      "mcp__Google_Drive__create_file",
+      "mcp__Google_Drive__update_file"
+    ]
+  }
+}
