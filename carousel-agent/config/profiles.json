@@ -1,0 +1,21 @@
+{
+  "_comment": "Add Instagram handles (without @) to 'profiles'. Thresholds are the agreed defaults: likes>=1000 OR comments>=150, and >=3x the creator's own median. Tune ONLY after running scripts/calibrate.mjs.",
+  "profiles": [],
+  "scrapecreators": {
+    "_comment": "UNVERIFIED endpoint/params until Phase 0a (live call). Pin the real values here afterwards.",
+    "posts_path": "/v2/instagram/user/posts",
+    "handle_param": "handle",
+    "cursor_param": "next_max_id",
+    "max_pages": 3
+  },
+  "thresholds": {
+    "min_likes": 1000,
+    "min_comments": 150,
+    "outlier_multiple": 3,
+    "baseline_posts": 20,
+    "min_baseline_posts": 5,
+    "min_slides": 3,
+    "windows_days": [30, 60, 90],
+    "backups": 2
+  }
+}
