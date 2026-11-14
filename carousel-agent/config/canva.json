@@ -1,0 +1,80 @@
+{
+  "_comment": "Measured on a throwaway copy of the design on 2026-11-14 (edit + thumbnail test). Locator IDs were IDENTICAL in a second fresh copy (checked 2026-11-14), but still find elements by original text + role (read-design on the new copy) and treat the IDs as a hint. max_chars are approximate and derived from the original text plus one overflow test; always verify with the after-edit thumbnail.",
+  "design": {
+    "id": "DAHUC57-RDg",
+    "title": "2026-09-02 - הסוד הקטן שלמדתי על חנויות שופיפיי שלא מוכרות",
+    "pages": 6,
+    "page_size": { "width": 1080, "height": 1350 },
+    "ratio": "4:5",
+    "never_edit_original": true
+  },
+  "behaviors_measured": {
+    "replace_text_keeps_formatting": true,
+    "text_box_autogrows_and_can_overlap_the_photo": "Slide 3: a 260-char body (the original is 173) grew the box and ran over the photo. Hence the max_chars below.",
+    "highlight_bars_are_separate_fixed_shapes": "Slides 1, 4, 5 have a lime rectangle that does NOT follow the text. After replacing text, re-fit it with resize_element/position_element, verify with the thumbnail (max 3 tries), and if it still looks wrong delete it with delete_element.",
+    "resize_element_works_on_highlight": true,
+    "edit_design_demands_verification": "Every edit returns status edits_unverified plus a thumbnail. Compare it before moving to the next page."
+  },
+  "slides": [
+    {
+      "n": 1,
+      "role": "hook",
+      "elements": [
+        { "role": "hook_line_1", "original": "הסוד הקטן ששינה לי את כל", "locator_id": "PB6RX55Tl557g2SG-LB8C7sCFj3DdNFkh", "font": "104pt heavy", "max_chars": 26 },
+        { "role": "hook_line_2", "original": "מה שידעתי על למה חנויות שופיפיי לא מוכרות", "locator_id": "PB6RX55Tl557g2SG-LBHgPDSs2HZB6hg7", "font": "104pt heavy, right-aligned", "max_chars": 48 },
+        { "role": "highlight", "type": "shape", "locator_id": "PB6RX55Tl557g2SG-LBP0STbW1tQpKwBw", "original_box": { "top": 550, "left": 157, "width": 705, "height": 91 }, "note": "sits behind the 2nd line of hook_line_1" },
+        { "role": "handle", "original": "@kfiryahav", "keep": true }
+      ]
+    },
+    {
+      "n": 2,
+      "role": "setup",
+      "elements": [
+        { "role": "setup_line_1", "original": "לקוח פנה אליי בטוח", "locator_id": "PBph0pfFWqw9Rn6M-LBzndVPSyxv9TJ5c-LBB9cySz51nxfRS5", "font": "64pt medium", "max_chars": 24, "note": "child of a group" },
+        { "role": "setup_line_2", "original": "שהקריאייטיב אשם", "locator_id": "PBph0pfFWqw9Rn6M-LBzndVPSyxv9TJ5c-LBKx0ld9b7x5H00j", "font": "64pt heavy", "max_chars": 24, "note": "child of a group" },
+        { "role": "note_left", "original": "לא טובים \nמספיק", "locator_id": "PBph0pfFWqw9Rn6M-LBl3mTrkrc57w6CZ", "font": "85pt bold, rotated sticky note", "max_chars": 18, "note": "2 short lines" },
+        { "role": "note_right", "original": "רעיונות", "locator_id": "PBph0pfFWqw9Rn6M-LBddxySWm5zkqNgk", "font": "85pt bold, rotated sticky note", "max_chars": 9, "note": "one short word" },
+        { "role": "page_number", "original": "2", "keep": true }
+      ]
+    },
+    {
+      "n": 3,
+      "role": "investigation",
+      "elements": [
+        { "role": "title", "original": "פתחתי את הקוד", "locator_id": "PBNSWzY69jKd7t99-LBrPM20pSnMKt0Jc", "font": "85pt heavy", "max_chars": 20 },
+        { "role": "body", "original": "לפני שהצעתי אפילו קריאייטיב אחד, פתחתי את הדפדפן ובדקתי את החנות מבפנים. מה שמצאתי: עמוד מוצר שנטען ב-6 שניות, פיקסל שבור, ו-checkout שמאבד לקוחות באמצע.", "locator_id": "PBNSWzY69jKd7t99-LBWlsChml1Kw81PP", "font": "42.7pt medium", "max_chars": 175, "note": "Overflowed into the photo at 260 chars." },
+        { "role": "photo", "type": "image", "locator_id": "PBNSWzY69jKd7t99-LBcXdqdV4yqgj6Vq", "replaceable": true, "original_alt": "ידיים מקלידות על לפטופ תוך אחיזת כרטיס אשראי, תמונת checkout/תשלום", "note": "TOPIC-SPECIFIC (checkout/payment). Replace for other topics or flag it in the approval message." },
+        { "role": "page_number", "original": "3", "keep": true }
+      ]
+    },
+    {
+      "n": 4,
+      "role": "punch",
+      "elements": [
+        { "role": "punch_small", "original": "זו לא בעיית שיווק", "locator_id": "PBmSkR4xjtzZ90Kh-LBdgSG8SBdxJTcWf", "font": "64pt normal, centered", "max_chars": 20 },
+        { "role": "punch_big", "original": "זו בעיה טכנית לגמרי, \nלא קריאייטיב חלש.", "locator_id": "PBmSkR4xjtzZ90Kh-LBPvcSl26Ng3Vym3", "font": "85pt heavy, centered", "max_chars": 40 },
+        { "role": "highlight", "type": "shape", "locator_id": "PBmSkR4xjtzZ90Kh-LBHd3ry7sPg55tYC", "original_box": { "top": 724, "left": 234, "width": 613, "height": 64 } },
+        { "role": "page_number", "original": "4", "keep": true }
+      ]
+    },
+    {
+      "n": 5,
+      "role": "action",
+      "elements": [
+        { "role": "title", "original": "בדקו את זה קודם", "locator_id": "PBPz4GJ1tZCkQgcV-LBvzqFnBH5KZ3vDd", "font": "64pt heavy, centered", "max_chars": 24 },
+        { "role": "highlight", "type": "shape", "locator_id": "PBPz4GJ1tZCkQgcV-LBGqbZCc3T5kMvKk", "original_box": { "top": 546, "left": 189, "width": 307, "height": 74 }, "note": "highlights the LAST words of the title (left end, RTL). Resized to width 440 in the test and it worked." },
+        { "role": "body", "original": "לפני שאתם משנים קריאייטיב או מגדילים תקציב - בדקו מהירות טעינה, ודאו שהפיקסל וה-Conversion API עובדים תקין, ועברו על תהליך ה-checkout כלקוח בעצמכם.", "locator_id": "PBPz4GJ1tZCkQgcV-LBfJYNDmzDZjXDBB", "font": "42.7pt normal, centered", "max_chars": 150 },
+        { "role": "page_number", "original": "5", "keep": true }
+      ]
+    },
+    {
+      "n": 6,
+      "role": "save_cta",
+      "elements": [
+        { "role": "cta_title", "original": "שמרו את הפוסט הזה", "locator_id": "PB21C46NRy48Hdqs-LBsmZjr40gvzQyLm", "font": "56pt heavy", "max_chars": 22, "note": "fixed CTA; change only if lessons.md says so" },
+        { "role": "cta_body", "original": "תזדקקו לו לפני הקמפיין הבא. יש לכם חשד שהחנות שלכם \"תקועה\" טכנית? כתבו בתגובות ואני אכוון אתכם", "locator_id": "PB21C46NRy48Hdqs-LBZDRsmfm44kDpWQ", "font": "48pt normal, centered", "max_chars": 100 },
+        { "role": "handle", "original": "@kfiryahav", "keep": true }
+      ]
+    }
+  ]
+}
