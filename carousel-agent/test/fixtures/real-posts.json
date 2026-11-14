@@ -1,0 +1,491 @@
+{
+ "_comment": "Trimmed copy of a REAL ScrapeCreators /v2/instagram/user/posts response (nick_saraev, 2026-11-14). Captions cut to 200 chars; media URLs replaced with placeholders.",
+ "user": {
+  "username": "nick_saraev",
+  "follower_count": 741730
+ },
+ "items": [
+  {
+   "id": "4029571396387306606_72269881052",
+   "code": "Dfr6dXevXxu",
+   "media_type": 2,
+   "product_type": "clips",
+   "like_count": 694,
+   "comment_count": 757,
+   "taken_at": 1794582455,
+   "url": "https://www.instagram.com/p/Dfr6dXevXxu/",
+   "like_and_view_counts_disabled": false,
+   "play_count": 40668,
+   "caption": {
+    "text": "Comment \"ERASE\" to get this Free Claude Code skill to delete your personal information from the internet.\n\nYou can now use Claude Code to delete all your personal information and digital footprint fro"
+   }
+  },
+  {
+   "id": "4028876477305738045_72269881052",
+   "code": "Dfpcc9pvFM9",
+   "media_type": 2,
+   "product_type": "clips",
+   "like_count": 1048,
+   "comment_count": 985,
+   "taken_at": 1794499598,
+   "url": "https://www.instagram.com/p/Dfpcc9pvFM9/",
+   "like_and_view_counts_disabled": false,
+   "play_count": 54260,
+   "caption": {
+    "text": "Comment \"BROWSER\" to Get this Free AI Tool that lets Claude Control your Browser. \n\nVercel just dropped a free AI tool that lets your coding agent control your browser. \n\nAnd complete any task, withou"
+   }
+  },
+  {
+   "id": "4028652440294183499_72269881052",
+   "code": "Dfopgy7PtJL",
+   "media_type": 2,
+   "product_type": "clips",
+   "like_count": 1495,
+   "comment_count": 1861,
+   "taken_at": 1794474262,
+   "url": "https://www.instagram.com/p/Dfopgy7PtJL/",
+   "like_and_view_counts_disabled": false,
+   "play_count": 85253,
+   "caption": {
+    "text": "Comment \"CLAUDE\" to get these 5 free plugins to make your Claude Code 10x more powerful.\n\nThese 5 AI plugins can make your Claude Code 10x more powerful, and they're all completely free.\n\nThe first is"
+   }
+  },
+  {
+   "id": "4028216727200283782_72269881052",
+   "code": "DfnGcVfDzyG",
+   "media_type": 8,
+   "product_type": "carousel_container",
+   "like_count": 5322,
+   "comment_count": 6388,
+   "taken_at": 1794420875,
+   "url": "https://www.instagram.com/p/DfnGcVfDzyG/",
+   "like_and_view_counts_disabled": false,
+   "play_count": null,
+   "caption": {
+    "text": "Comment \"FABLE\" to get the prompts for all 13 Claude Fable 5.2 use cases.\n\nClaude Fable 5.2 can build things that honestly look like real life, and you can copy every one of them.\n\nThese are 7 of the "
+   },
+   "carousel_media_count": 8,
+   "carousel_media": [
+    {
+     "media_type": 1,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-0-1440.jpg",
+        "width": 1440,
+        "height": 1800
+       },
+       {
+        "url": "https://example.invalid/slide-0-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 2,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-1-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 2,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-2-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 2,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-3-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 2,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-4-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 2,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-5-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 2,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-6-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 1,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-7-1440.jpg",
+        "width": 1440,
+        "height": 1800
+       },
+       {
+        "url": "https://example.invalid/slide-7-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "4026469404391715481_72269881052",
+   "code": "Dfg5JcTvzKZ",
+   "media_type": 2,
+   "product_type": "clips",
+   "like_count": 1276,
+   "comment_count": 2279,
+   "taken_at": 1794212686,
+   "url": "https://www.instagram.com/p/Dfg5JcTvzKZ/",
+   "like_and_view_counts_disabled": false,
+   "play_count": 72959,
+   "caption": {
+    "text": "Comment \"CHATGPT\" to claim your Free ChatGPT API credits.\n\nChatGPT is now giving Free API credits every month.\n\nThat adds up to as much as $6K a year.\n\nAnd here's how you can claim yours.\n\nIf you're a"
+   }
+  },
+  {
+   "id": "4025755659889576740_72269881052",
+   "code": "DfeW3F8PIsk",
+   "media_type": 2,
+   "product_type": "clips",
+   "like_count": 1638,
+   "comment_count": 1812,
+   "taken_at": 1794127625,
+   "url": "https://www.instagram.com/p/DfeW3F8PIsk/",
+   "like_and_view_counts_disabled": false,
+   "play_count": 98441,
+   "caption": {
+    "text": "Comment \"REPO\" to get all these 5 Free GitHub repos to replace the Paid AI tools you use.\n\nUse these 5 free GitHub repos to save over a thousand dollars on the AI tools you're already paying for.\n\nSo "
+   }
+  },
+  {
+   "id": "4025257572448437064_72269881052",
+   "code": "Dfclm93PYNI",
+   "media_type": 2,
+   "product_type": "clips",
+   "like_count": 1687,
+   "comment_count": 2834,
+   "taken_at": 1794068190,
+   "url": "https://www.instagram.com/p/Dfclm93PYNI/",
+   "like_and_view_counts_disabled": false,
+   "play_count": 101480,
+   "caption": {
+    "text": "Comment \"SEO\" to get this Free Repo to turn your Claude Code into an SEO expert.\n\nYou don't need to pay for expensive SEO tools anymore.\n\nInstead, use this free Claude plugin to turn your Claude Code "
+   }
+  },
+  {
+   "id": "4025024422019583987_72269881052",
+   "code": "DfbwmLmv8_z",
+   "media_type": 2,
+   "product_type": "clips",
+   "like_count": 4234,
+   "comment_count": 2328,
+   "taken_at": 1794040389,
+   "url": "https://www.instagram.com/p/DfbwmLmv8_z/",
+   "like_and_view_counts_disabled": false,
+   "play_count": 211502,
+   "caption": {
+    "text": "Comment \"GOOGLE\" to get this Free Google AI Plugins that fixes your Code. \n\nGoogle just open sourced a free plugin that stops your AI from writing buggy, sloppy code.\n\nAnd thousands of Google engineer"
+   }
+  },
+  {
+   "id": "4024549658353180952_72269881052",
+   "code": "DfaEpdfD6EY",
+   "media_type": 8,
+   "product_type": "carousel_container",
+   "like_count": 2769,
+   "comment_count": 2030,
+   "taken_at": 1793983727,
+   "url": "https://www.instagram.com/p/DfaEpdfD6EY/",
+   "like_and_view_counts_disabled": false,
+   "play_count": null,
+   "caption": {
+    "text": "Comment \"CLAUDE\" to get the full Video on how to become an AI consultant.\n\nAI is automating jobs fast, and the job with the most long-term value is helping businesses implement it.\n\nYou talk to the ow"
+   },
+   "carousel_media_count": 11,
+   "carousel_media": [
+    {
+     "media_type": 1,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-0-1440.jpg",
+        "width": 1440,
+        "height": 1800
+       },
+       {
+        "url": "https://example.invalid/slide-0-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 1,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-1-1440.jpg",
+        "width": 1440,
+        "height": 1800
+       },
+       {
+        "url": "https://example.invalid/slide-1-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 1,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-2-1440.jpg",
+        "width": 1440,
+        "height": 1800
+       },
+       {
+        "url": "https://example.invalid/slide-2-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 1,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-3-1440.jpg",
+        "width": 1440,
+        "height": 1800
+       },
+       {
+        "url": "https://example.invalid/slide-3-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 1,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-4-1440.jpg",
+        "width": 1440,
+        "height": 1800
+       },
+       {
+        "url": "https://example.invalid/slide-4-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 1,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-5-1440.jpg",
+        "width": 1440,
+        "height": 1800
+       },
+       {
+        "url": "https://example.invalid/slide-5-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 1,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-6-1440.jpg",
+        "width": 1440,
+        "height": 1800
+       },
+       {
+        "url": "https://example.invalid/slide-6-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 1,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-7-1440.jpg",
+        "width": 1440,
+        "height": 1800
+       },
+       {
+        "url": "https://example.invalid/slide-7-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 1,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-8-1440.jpg",
+        "width": 1440,
+        "height": 1800
+       },
+       {
+        "url": "https://example.invalid/slide-8-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 1,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-9-1440.jpg",
+        "width": 1440,
+        "height": 1800
+       },
+       {
+        "url": "https://example.invalid/slide-9-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    },
+    {
+     "media_type": 1,
+     "image_versions2": {
+      "candidates": [
+       {
+        "url": "https://example.invalid/slide-10-1440.jpg",
+        "width": 1440,
+        "height": 1800
+       },
+       {
+        "url": "https://example.invalid/slide-10-480.jpg",
+        "width": 480,
+        "height": 600
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "4024275303688631575_72269881052",
+   "code": "DfZGREyvPUX",
+   "media_type": 2,
+   "product_type": "clips",
+   "like_count": 3897,
+   "comment_count": 4787,
+   "taken_at": 1793951072,
+   "url": "https://www.instagram.com/p/DfZGREyvPUX/",
+   "like_and_view_counts_disabled": false,
+   "play_count": 188278,
+   "caption": {
+    "text": "Comment \"GAME\" to get these Free AI Skills for Building Full Games with Claude Code.\n\nYour Claude Code can now build full video games like a real developer.\n\nAnd it only takes this one plugin.\n\nSomeon"
+   }
+  },
+  {
+   "id": "4023822905446792372_72269881052",
+   "code": "DfXfZ0GPHy0",
+   "media_type": 2,
+   "product_type": "clips",
+   "like_count": 429,
+   "comment_count": 312,
+   "taken_at": 1793897181,
+   "url": "https://www.instagram.com/p/DfXfZ0GPHy0/",
+   "like_and_view_counts_disabled": false,
+   "play_count": 47076,
+   "caption": {
+    "text": "Comment \"DOTS\" to try out dots inside @ChatGPT.\n\nYou can now give ChatGPT a job and just walk away.\n\nOpenAI just rolled out these things called dots, and here's how they work.\n\nA dot is basically an a"
+   }
+  },
+  {
+   "id": "4023041078733901588_72269881052",
+   "code": "DfUtovOvQ8U",
+   "media_type": 2,
+   "product_type": "clips",
+   "like_count": 1999,
+   "comment_count": 2523,
+   "taken_at": 1793804001,
+   "url": "https://www.instagram.com/p/DfUtovOvQ8U/",
+   "like_and_view_counts_disabled": false,
+   "play_count": 111462,
+   "caption": {
+    "text": "Comment \"DESIGN\" to get this Free AI Tool to make premium websites with Claude Code. \n\nClaude Code can now make premium websites like these that don't look vibe coded.\n\nAnd it only takes this one skil"
+   }
+  }
+ ],
+ "next_max_id": "sc:redacted",
+ "more_available": true,
+ "num_results": 12
+}

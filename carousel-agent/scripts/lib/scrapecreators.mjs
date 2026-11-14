@@ -9,12 +9,35 @@ const KEY = process.env.SCRAPECREATORS_API_KEY || 'proxy-injected';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-export async function scGet(path, params = {}, { retries = 3, timeoutMs = 30000 } = {}) {
+// Every call costs a credit. For development only: set SC_CACHE_DIR to reuse responses
+// (TTL SC_CACHE_TTL_MIN, default 360 minutes). The daily cloud run leaves it unset.
+async function withCache(url, fetcher) {
+  const dir = process.env.SC_CACHE_DIR;
+  if (!dir) return fetcher();
+  const { createHash } = await import('node:crypto');
+  const { readFile, writeFile, mkdir, stat } = await import('node:fs/promises');
+  const file = `${dir}/${createHash('sha1').update(url.toString()).digest('hex')}.json`;
+  try {
+    const age = (Date.now() - (await stat(file)).mtimeMs) / 60000;
+    if (age < Number(process.env.SC_CACHE_TTL_MIN || 360)) return JSON.parse(await readFile(file, 'utf8'));
+  } catch {
+    /* cache miss */
+  }
+  const body = await fetcher();
+  await mkdir(dir, { recursive: true });
+  await writeFile(file, JSON.stringify(body));
+  return body;
+}
+
+export async function scGet(path, params = {}, opts = {}) {
   const url = new URL(path, BASE);
   for (const [k, v] of Object.entries(params)) {
     if (v !== undefined && v !== null && v !== '') url.searchParams.set(k, String(v));
   }
+  return withCache(url, () => scFetch(url, opts));
+}
 
+async function scFetch(url, { retries = 3, timeoutMs = 30000 } = {}) {
   let lastErr;
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {

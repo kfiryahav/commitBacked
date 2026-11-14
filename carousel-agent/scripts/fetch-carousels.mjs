@@ -1,14 +1,17 @@
 #!/usr/bin/env node
-// Step 2 of the daily run: fetch every profile, apply the selection rule, write out/candidates.json.
+// Step 1 of the daily run: fetch the profiles, apply the selection rule, write out/candidates.json.
 //
 //   node carousel-agent/scripts/fetch-carousels.mjs [--config path] [--seen out/seen.json]
 //                                                   [--out out/candidates.json] [--handles a,b]
 //
 // seen.json is a JSON array of post ids/codes already used (the agent copies it from Drive first).
+// Credits: each page of posts costs one ScrapeCreators credit, so feeds are paged lazily and the
+// time window is widened (30 -> 60 -> 90 days) only when nothing passed yet.
+import './lib/ensure-proxy.mjs';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { loadConfig, loadCreators } from './lib/load.mjs';
+import { loadConfig, loadFeeds } from './lib/load.mjs';
 import { selectCarousel } from './lib/select.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -38,19 +41,32 @@ if ((handles || config.profiles).length === 0) {
 }
 
 const seen = await readSeen(seenPath);
-const { creators, errors, calls } = await loadCreators(config, { handles });
 const nowSec = Math.floor(Date.now() / 1000);
-const result = selectCarousel({ creators, seen, cfg: config.thresholds, nowSec });
+const windows = config.thresholds.windows_days;
 
+const feeds = new Map();
+let loaded = { creators: [], errors: [], calls: 0 };
+let result = null;
+for (const w of windows) {
+  loaded = await loadFeeds(config, { handles, untilDays: w, nowSec, feeds });
+  if (loaded.creators.length === 0) break; // every profile failed: widening cannot help
+  result = selectCarousel({ creators: loaded.creators, seen, cfg: { ...config.thresholds, windows_days: [w] }, nowSec });
+  result.widened = w !== windows[0];
+  if (result.pick) break;
+}
+
+const followersOf = (handle) => loaded.creators.find((c) => c.handle === handle)?.followers ?? null;
 const slim = (r) =>
   r && {
     handle: r.handle,
+    followers: followersOf(r.handle),
     url: r.post.url,
     id: r.post.id,
     code: r.post.code,
     likes: r.post.likes,
     comments: r.post.comments,
     slideCount: r.post.slideCount,
+    slideKinds: r.post.slideKinds,
     takenAt: r.post.takenAt,
     caption: r.post.caption,
     slideUrls: r.post.slideUrls,
@@ -62,16 +78,23 @@ const slim = (r) =>
 
 const out = {
   generated_at: new Date(nowSec * 1000).toISOString(),
-  window_days: result.window_days,
-  widened: result.widened,
-  passing_count: result.passing_count,
-  considered_carousels: result.considered_carousels,
-  pick: slim(result.pick),
-  backups: result.backups.map(slim),
-  rejection_reasons: result.rejection_reasons || null,
-  profiles_ok: creators.map((c) => ({ handle: c.handle, posts: c.posts.length })),
-  profile_errors: errors,
-  api_calls: calls,
+  window_days: result?.window_days ?? null,
+  widened: result?.widened ?? false,
+  passing_count: result?.passing_count ?? 0,
+  considered_carousels: result?.considered_carousels ?? 0,
+  pick: slim(result?.pick),
+  backups: (result?.backups || []).map(slim),
+  rejection_reasons: result?.rejection_reasons || null,
+  profiles_ok: loaded.creators.map((c) => ({
+    handle: c.handle,
+    followers: c.followers,
+    posts: c.posts.length,
+    calls: c.calls,
+    exhausted: c.exhausted,
+    pages: c.pages,
+  })),
+  profile_errors: loaded.errors,
+  api_calls: loaded.calls,
 };
 
 await mkdir(dirname(outPath), { recursive: true });
@@ -85,7 +108,7 @@ if (!out.pick) {
       `x${out.pick.ratio_vs_own_median} vs own median (window ${out.window_days}d, ${out.passing_count} passing)`,
   );
 }
-if (errors.length) console.log(`PROFILE_ERRORS: ${errors.map((e) => `@${e.handle}: ${e.error}`).join(' | ')}`);
-console.log(`Wrote ${outPath}`);
+if (loaded.errors.length) console.log(`PROFILE_ERRORS: ${loaded.errors.map((e) => `@${e.handle}: ${e.error}`).join(' | ')}`);
+console.log(`API calls (credits): ${out.api_calls}. Wrote ${outPath}`);
 // Exit non-zero only when every profile failed (e.g. bad key / out of credits).
-process.exit(creators.length === 0 ? 3 : 0);
+process.exit(loaded.creators.length === 0 ? 3 : 0);

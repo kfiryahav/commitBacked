@@ -31,6 +31,7 @@ node carousel-agent/scripts/fetch-carousels.mjs
 node carousel-agent/scripts/download-slides.mjs
 ```
 צפה בכל תמונה ב-`carousel-agent/out/slides/` (כלי Read קורא תמונות) וקרא את הטקסט שעל השקפים.
+שקפי וידאו (`pick.slideKinds` = `video`) מגיעים כתמונת פוסטר בלבד, ולכן הטקסט שעליהם עשוי להיות חלקי. ציין זאת.
 אם הוחזר `DOWNLOAD_BLOCKED` או `NO_SLIDE_URLS`: עבוד מהכיתוב (`pick.caption`) בלבד, ואמור בהודעה במפורש שלא ראית את השקפים.
 
 ## שלב 3: ניתוח

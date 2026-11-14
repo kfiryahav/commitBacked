@@ -3,6 +3,7 @@
 // (the text lives inside the images). Partial or total failure is reported, never hidden.
 //
 //   node carousel-agent/scripts/download-slides.mjs [--in out/candidates.json] [--dir out/slides]
+import './lib/ensure-proxy.mjs';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';

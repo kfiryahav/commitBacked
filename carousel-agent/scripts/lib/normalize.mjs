@@ -1,9 +1,14 @@
 // Maps a raw ScrapeCreators / Instagram post object to the normalized shape used by select.mjs.
 //
-// !! The field names below are EDUCATED GUESSES covering the common Instagram shapes
-// !! (GraphQL-style and mobile-API-style). They are NOT verified against a live
-// !! ScrapeCreators response yet; that is Phase 0a in the plan. Once a real response is
-// !! captured, trim this to the real shape and replace the synthetic test fixtures.
+// VERIFIED live on 2026-11-14 against GET /v2/instagram/user/posts?handle=nick_saraev:
+//   items[]: code, id, media_type (8 = carousel, 2 = video/reel, 1 = image), product_type
+//   ('carousel_container' | 'clips'), like_count, comment_count, taken_at (epoch seconds),
+//   caption.text, carousel_media[] (each: media_type, image_versions2.candidates[{url,width,height}]),
+//   carousel_media_count, like_and_view_counts_disabled, play_count (reels only).
+//   Envelope: { user: { follower_count }, items, next_max_id, more_available }.
+//   There are NO share or save counts anywhere in the response.
+// The other shapes handled below (GraphQL-style names) are fallbacks that were not observed.
+// test/fixtures/real-posts.json holds a trimmed copy of the real response.
 
 function toEpochSec(v) {
   if (v === undefined || v === null) return null;
@@ -17,9 +22,19 @@ function firstNumber(...vals) {
   return null;
 }
 
+// Pick the smallest image that is still >= 720px wide (good enough to read text, cheap to download);
+// if none is that wide, take the largest one available.
+function pickCandidate(candidates) {
+  const list = (candidates || []).filter((c) => c?.url);
+  if (list.length === 0) return null;
+  const wide = list.filter((c) => (c.width || 0) >= 720).sort((a, b) => a.width - b.width);
+  if (wide.length) return wide[0].url;
+  return list.sort((a, b) => (b.width || 0) - (a.width || 0))[0].url;
+}
+
 function slideUrl(c) {
   return (
-    c?.image_versions2?.candidates?.[0]?.url ||
+    pickCandidate(c?.image_versions2?.candidates) ||
     c?.display_url ||
     c?.display_uri ||
     c?.image_url ||
@@ -27,6 +42,11 @@ function slideUrl(c) {
     c?.url ||
     null
   );
+}
+
+// For video slides the image is only a poster frame.
+function slideKind(c) {
+  return c?.media_type === 2 || c?.is_video === true ? 'video' : 'image';
 }
 
 export function normalizePost(raw, handle) {
@@ -47,6 +67,7 @@ export function normalizePost(raw, handle) {
   else if (raw.media_type === 1 || /image|photo/i.test(typeHint)) type = 'image';
 
   const slideUrls = children.map(slideUrl).filter(Boolean);
+  const slideKinds = children.map(slideKind);
   const slideCount = children.length || raw.carousel_media_count || (type === 'carousel' ? 0 : 1);
 
   let likes = firstNumber(raw.like_count, raw.edge_media_preview_like?.count, raw.edge_liked_by?.count, raw.likes);
@@ -67,6 +88,7 @@ export function normalizePost(raw, handle) {
     type,
     slideCount,
     slideUrls,
+    slideKinds,
     likes,
     comments,
     takenAt: toEpochSec(raw.taken_at ?? raw.taken_at_timestamp ?? raw.timestamp ?? raw.date ?? raw.created_at),

@@ -4,9 +4,10 @@
 //
 //   node carousel-agent/scripts/calibrate.mjs [--config path] [--handles a,b]
 //        [--min-likes 1000] [--min-comments 150] [--multiple 3]
+import './lib/ensure-proxy.mjs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { loadConfig, loadCreators } from './lib/load.mjs';
+import { loadConfig, loadFeeds } from './lib/load.mjs';
 import { evaluateAll, summarizeRejections } from './lib/select.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -24,16 +25,16 @@ const cfg = {
 };
 const handles = arg('handles') ? arg('handles').split(',') : undefined;
 
-const { creators, errors, calls } = await loadCreators(config, { handles });
+const maxWindow = arg('days') ? Number(arg('days')) : Math.max(...cfg.windows_days);
 const nowSec = Math.floor(Date.now() / 1000);
+// Each page is one ScrapeCreators credit. --days N limits how far back we page (default: widest window).
+const { creators, errors, calls } = await loadFeeds(config, { handles, untilDays: maxWindow, nowSec });
 
 console.log(`Thresholds: likes>=${cfg.min_likes} OR comments>=${cfg.min_comments}, and >= ${cfg.outlier_multiple}x own median`);
-console.log(`Profiles fetched: ${creators.length}, errors: ${errors.length}, API calls: ${calls}\n`);
+console.log(`Profiles fetched: ${creators.length}, errors: ${errors.length}, API calls (credits): ${calls}, looked back ${maxWindow} days\n`);
 for (const e of errors) console.log(`  ! @${e.handle}: ${e.error}`);
-
-const maxWindow = Math.max(...cfg.windows_days);
 console.log('Window   passing   per 30 days');
-for (const w of cfg.windows_days) {
+for (const w of cfg.windows_days.filter((d) => d <= maxWindow)) {
   const pass = evaluateAll(creators, cfg, { nowSec, windowDays: w }).filter((r) => r.pass).length;
   console.log(`${String(w).padStart(4)}d   ${String(pass).padStart(7)}   ${(pass * 30 / w).toFixed(1).padStart(10)}`);
 }
